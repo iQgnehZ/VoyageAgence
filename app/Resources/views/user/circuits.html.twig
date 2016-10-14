@@ -1,0 +1,40 @@
+{% extends 'user.html.twig' %}
+
+{% block body %}
+    <h2 class="page-header">Nos circuits</h2>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Pays Depart</th>
+                <th>Ville Depart</th>
+                <th>Ville Arrivee</th>
+                <th>Duree Circuit</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for circuit in circuits %}
+            <tr>
+                <th scope="row"><a href="{{ path('circuit_show', { 'id': circuit.id }) }}">{{ circuit.id }}</a></td>
+                <td>{{ circuit.description }}</td>
+                <td>{{ circuit.paysDepart }}</td>
+                <td>{{ circuit.villeDepart }}</td>
+                <td>{{ circuit.villeArrivee }}</td>
+                <td>{{ circuit.dureeCircuit }}</td>
+                <td>
+                    <ul>
+                            <a href="{{ path("circuit_details", { 'id': circuit.id })}}" class="btn btn-success">détails</a>
+				            <a href="{{ path("circuit_details", { 'id': circuit.id }) }}" class="btn btn-default">Edit</a>
+				            <a href="{{ path("circuit_delete", { 'id': circuit.id })}}" class="btn btn-danger">Delete</a>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %} 
