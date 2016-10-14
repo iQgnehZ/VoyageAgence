@@ -104,4 +104,13 @@ class UserController extends Controller
 				'form'=> $form->createView()
 		));
 	}
+	/**
+	 * @Route("/circuit/edit/{id}", name="circuit_edit )
+	 */
+	public function editAction($id)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$circuit=$em->getRepository('AppBundle:Circuit')->find($id);
+		 
+	}
 }
