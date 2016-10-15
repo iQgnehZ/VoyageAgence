@@ -26,9 +26,12 @@
 				<tbody>
  			{% for etape in circuit.etapes %}
 	 		<tr>
-			   <td>{{ etape.numeroEtape }}</td>
-			   <td>{{ etape.villeEtape }}</td> 
-			   <td>{{ etape.nombreJours }} j.</td>
+			   <td>{{ etape.numeroEtape }} 	 <a href="{{ path("etape_edit", { 'id': etape.id }) }}" class="btn btn-default">Edit</a>
+				           					 <a href="{{ path("etape_delete", { 'id': etape.id })}}" class="btn btn-danger">Delete</a></td>
+			   <td>{{ etape.villeEtape }}    <a href="{{ path("etape_edit", { 'id': etape.id }) }}" class="btn btn-default">Edit</a>
+				           					 <a href="{{ path("etape_delete", { 'id': etape.id })}}" class="btn btn-danger">Delete</a></td></td> 
+			   <td>{{ etape.nombreJours }} j.<a href="{{ path("etape_edit", { 'id': etape.id }) }}" class="btn btn-default">Edit</a>
+				           					 <a href="{{ path("etape_delete", { 'id': etape.id })}}" class="btn btn-danger">Delete</a></td></td>
 			</tr>
 			{% endfor %} {# circuit.etapes #}
 			</tbody>
@@ -48,9 +51,12 @@
 				</thead>
 		{%  for programmation in circuit.programmations %}
 			<tr>
-			   <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
-			   <td>{{ programmation.nombrePersonnes }}</td> 
-			   <td>{{ programmation.prix }} euros</td>
+			   <td>{{ programmation.dateDepart|date('d-m-Y')  }}<a href="{{ path("programmation_edit", { 'id': etape.id }) }}" class="btn btn-default">Edit</a>
+				           										<a href="{{ path("programmation_delete", { 'id': circuit.id })}}" class="btn btn-danger">Delete</a></td>
+			   <td>{{ programmation.nombrePersonnes }}<a href="{{ path("programmation_edit", { 'id': etape.id }) }}" class="btn btn-default">Edit</a>
+				           							  <a href="{{ path("programmation_delete", { 'id': circuit.id })}}" class="btn btn-danger">Delete</a></td> 
+			   <td>{{ programmation.prix }} euros<a href="{{ path("programmation_edit", { 'id': etape.id }) }}" class="btn btn-default">Edit</a>
+				           						 <a href="{{ path("programmation_delete", { 'id': circuit.id })}}" class="btn btn-danger">Delete</a></td>
 			</tr>
 		{% endfor %}
 		</table>
