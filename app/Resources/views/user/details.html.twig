@@ -40,8 +40,8 @@
 		</div> {# circuit_details #}
 		
 		<div class="programmations">
-		<h3>Programmations de ce circuit</h3>
-		<table>
+		<h3>Programmations de ce circuit <a href="{{ path("prog_create", {'circuit_id':circuit.id })}}" class="btn btn-default"> Add</a></h3>
+		<table class="table table-striped">
 		 		<thead>
 					<tr>
 				    	<th>Date de départ</th>

@@ -11,6 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Entity\ProgrammationCircuit;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 
 /**
  * User controller.
@@ -290,6 +292,44 @@ class UserController extends Controller
 		return $this->redirectToRoute ( 'circuit_details', array (
 				'id' => $circuit_id
 		) );
+	}
+	/**
+	 * @Route("/circuit/prog/create/{circuit_id}", name="prog_create")
+	 */
+	public function createProgrammationAction($circuit_id, Request $request)
+	{
+		$circuit = $this->getDoctrine ()->getRepository ( 'AppBundle:Circuit' )->find ( $circuit_id );
+	
+		$prog = new ProgrammationCircuit();
+	
+		$form = $this->createFormBuilder($prog)
+		->add('date_depart', DateTimeType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
+		->add('nombre_personnes', IntegerType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
+		->add('prix', IntegerType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
+		->add('save', SubmitType::class, array('label'=>'Create Programmation','attr' => array('class' =>'btn btn_primary','style' =>'margin-bottom:15px')))
+		->getForm();
+	
+		$form->handleRequest($request);
+	
+		if($form->isSubmitted()&& $form->isValid()){
+			$prog=$form->getData();
+			$circuit->addProgrammation($prog);
+	
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($prog);
+			$em->persist($circuit);
+			$em->flush();
+	
+			$this->addFlash(
+					'notice',
+					'Programmation Added'
+					);
+			return $this->redirectToRoute('circuit_details',array('id' => $circuit_id));
+		}
+	
+		return $this->render('user/createProgrammation.html.twig', array(
+				'form' => $form->createView(),
+		));
 	}
 	
 }
