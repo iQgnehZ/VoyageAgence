@@ -331,5 +331,58 @@ class UserController extends Controller
 				'form' => $form->createView(),
 		));
 	}
+	/**
+	 * @Route("/circuit/prog/edit/{circuit_id}/{id}", name="prog_edit" )
+	 */
+	public function editProgrammationAction($circuit_id, $id, Request $request)
+	{
+		$em = $this->getDoctrine()->getManager();
+		$prog=$em->getRepository('AppBundle:ProgrammationCircuit')->find($id);
+		$circuit=$em->getRepository('AppBundle:Circuit')->find($circuit_id);
+		
+		$prog->setDateDepart($prog->getDateDepart());
+		$prog->setNombrePersonnes($prog->getNombrePersonnes());
+		$prog->setPrix($prog->getPrix());
+	
+		$form = $this->createFormBuilder($prog)
+		->add('date_depart', DateTimeType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
+		->add('nombre_personnes', IntegerType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
+		->add('prix', IntegerType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
+		->add('save', SubmitType::class, array('label'=>'Update Programmation','attr' => array('class' =>'btn btn_primary','style' =>'margin-bottom:15px')))
+		->getForm();
+	
+		$form->handleRequest($request);
+	
+		if($form->isSubmitted() && $form->isValid()){
+			$dateDepart = $form['date_depart']->getData();
+			$nombrePersonnes = $form['nombre_personnes']->getData();
+			$prix = $form['prix']->getData();
+				
+			$em = $this->getDoctrine()->getManager();
+			$prog = $em->getRepository('AppBundle:ProgrammationCircuit')->find($id);
+	
+			$prog->setDateDepart($dateDepart);
+			$prog->setNombrePersonnes($nombrePersonnes);
+			$prog->setPrix($prix);
+			
+			$circuit=$em->getRepository('AppBundle:Circuit')->find($circuit_id);
+			
+			$em->persist($prog);
+			$em->persist($circuit);
+			$em->flush();
+			$this->addFlash(
+					'notice',
+					'Programmation Updated'
+					);
+	
+			return $this->redirectToRoute('circuit_details',array('id' => $circuit_id));
+		}
+	
+		return $this->render('user/editProgrammation.html.twig', array(
+				'$ciruit' => $circuit,
+				'form' => $form->createView()
+	
+		));
+	}
 	
 }

@@ -56,6 +56,7 @@
 			   <td>{{ programmation.nombrePersonnes }}</td> 
 			   <td>{{ programmation.prix }} euros</td>
 			   <td>
+			    <a href="{{ path("prog_edit", { 'id': programmation.id, 'circuit_id':circuit.id })}}" class="btn btn-success">Edit</a>
 			    <a href="{{ path("prog_delete", { 'id': programmation.id,'circuit_id':circuit.id })}}" class="btn btn-danger">Delete</a>
 			    </td>
 			</tr>
