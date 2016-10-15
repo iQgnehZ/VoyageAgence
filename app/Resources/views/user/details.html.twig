@@ -13,7 +13,7 @@
 			
 			<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j. de voyage à travers le {{ circuit.paysDepart }}, pour terminer à {{ circuit.villeArrivee }}.</p>
 			
-			<h3>Étapes</h3>
+			<h3>Étapes    <a href="{{ path("etape_create", {'circuit_id':circuit.id })}}" class="btn btn-default"> Add</a></h3>
 		 	<table class="table table-striped">
 		 		<thead>
 					<tr>
@@ -30,7 +30,7 @@
 			   <td>{{ etape.villeEtape }}    </td> 
 			   <td>{{ etape.nombreJours }} j.</td>
 			   <td>
-			   <a href="{{ path("etape_edit", { 'id': etape.id, 'circuit_id':circuit.id })}}" class="btn btn-default">Edit</a>
+			   <a href="{{ path("etape_edit", { 'id': etape.id, 'circuit_id':circuit.id })}}" class="btn btn-success">Edit</a>
 			   <a href="{{ path("etape_delete", { 'id': etape.id,'circuit_id':circuit.id })}}" class="btn btn-danger">Delete</a>
 			    </td>
 			</tr>
@@ -55,6 +55,9 @@
 			   <td>{{ programmation.dateDepart|date('d-m-Y') }} </td>
 			   <td>{{ programmation.nombrePersonnes }}</td> 
 			   <td>{{ programmation.prix }} euros</td>
+			   <td>
+			    <a href="{{ path("prog_delete", { 'id': programmation.id,'circuit_id':circuit.id })}}" class="btn btn-danger">Delete</a>
+			    </td>
 			</tr>
 		{% endfor %}
 		</table>

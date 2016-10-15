@@ -1,6 +1,6 @@
 {% extends 'user.html.twig' %}
 {% block body %}
-<h2 class="page-header">Create Circuit</h2>
+<h2 class="page-header">{% block title %}Create Circuit{% endblock %}</h2>
 {{ form_start(form) }}
 {{ form_widget(form) }}
 {{ form_end(form) }}
