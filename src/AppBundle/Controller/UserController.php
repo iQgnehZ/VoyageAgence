@@ -20,7 +20,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 class UserController extends Controller
 {
 	/**
-	 * @Route("/circuits/list", name="circuits_list")
+	 * @Route("/admin/circuits/", name="default_security_target")
+	 * @Route("/admin/circuits/list", name="circuits_list")
 	 * @Method("GET")
 	 */
 	public function listAction(Request $request)
@@ -36,7 +37,7 @@ class UserController extends Controller
 	/**
 	 * Finds and displays a Circuit entity.
 	 *
-	 * @Route("/circuit/details/{id}", name="circuit_details", requirements={
+	 * @Route("/admin/circuit/details/{id}", name="circuit_details", requirements={
 	 *              "id": "\d+"
 	 *     })
 	 * @Method("GET")
@@ -48,7 +49,7 @@ class UserController extends Controller
 		));
 	}
 	/**
-	 * @Route("/circuit/delete/{id}", name="circuit_delete" )
+	 * @Route("/admin/circuit/delete/{id}", name="circuit_delete" )
 	 */
 	public function deleteAction($id)
 	{
@@ -66,7 +67,7 @@ class UserController extends Controller
 		return $this->redirectToRoute('circuits_list');
 	}
 	/**
-	 * @Route("/circuit/create", name="circuit_create")
+	 * @Route("/admin/circuit/create", name="circuit_create")
 	 */
 	public function createAction(Request $request)
 	{
@@ -108,7 +109,7 @@ class UserController extends Controller
 		));
 	}
 	/**
-	 * @Route("/circuit/edit/{id}", name="circuit_edit" )
+	 * @Route("/admin/circuit/edit/{id}", name="circuit_edit" )
 	 */
 	public function editAction($id, Request $request)
 	{
@@ -166,7 +167,7 @@ class UserController extends Controller
 		 
 	}
 	/**
-	 * @Route("/circuit/etape/delete/{circuit_id}/{id}", name="etape_delete" )
+	 * @Route("/admin/circuit/etape/delete/{circuit_id}/{id}", name="etape_delete" )
 	 */
 	public function deleteEtapeAction($circuit_id,$id)
 	{
@@ -185,7 +186,7 @@ class UserController extends Controller
 		) );
 	}
 	/**
-	 * @Route("/circuit/etape/create/{circuit_id}", name="etape_create")
+	 * @Route("/admin/circuit/etape/create/{circuit_id}", name="etape_create")
 	 */
 	public function createEtapeAction($circuit_id, Request $request) 
 	{
@@ -223,7 +224,7 @@ class UserController extends Controller
 			));
 	}
 	/**
-	 * @Route("/circuit/etape/edit/{circuit_id}/{id}", name="etape_edit" )
+	 * @Route("/admin/circuit/etape/edit/{circuit_id}/{id}", name="etape_edit" )
 	 */
 	public function editEtapeAction($circuit_id, $id, Request $request)
 	{
@@ -275,7 +276,7 @@ class UserController extends Controller
 		));	
 	}
 	/**
-	 * @Route("/circuit/programmation/delete/{circuit_id}/{id}", name="prog_delete" )
+	 * @Route("/admin/circuit/programmation/delete/{circuit_id}/{id}", name="prog_delete" )
 	 */
 	public function deleteProgrammationAction($circuit_id,$id)
 	{
@@ -294,7 +295,7 @@ class UserController extends Controller
 		) );
 	}
 	/**
-	 * @Route("/circuit/prog/create/{circuit_id}", name="prog_create")
+	 * @Route("/admin/circuit/prog/create/{circuit_id}", name="prog_create")
 	 */
 	public function createProgrammationAction($circuit_id, Request $request)
 	{
@@ -332,7 +333,7 @@ class UserController extends Controller
 		));
 	}
 	/**
-	 * @Route("/circuit/prog/edit/{circuit_id}/{id}", name="prog_edit" )
+	 * @Route("/admin/circuit/prog/edit/{circuit_id}/{id}", name="prog_edit" )
 	 */
 	public function editProgrammationAction($circuit_id, $id, Request $request)
 	{
@@ -345,7 +346,7 @@ class UserController extends Controller
 		$prog->setPrix($prog->getPrix());
 	
 		$form = $this->createFormBuilder($prog)
-		->add('date_depart', DateTimeType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
+		->add('date_depart', DateTimeType::class, array('widget'=>'single_text','attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('nombre_personnes', IntegerType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('prix', IntegerType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('save', SubmitType::class, array('label'=>'Update Programmation','attr' => array('class' =>'btn btn_primary','style' =>'margin-bottom:15px')))
