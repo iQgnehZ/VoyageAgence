@@ -293,6 +293,46 @@ class Circuit
     }
 
     /**
+     * Before update etape
+     *
+     * @param \AppBundle\Entity\Etape $etape
+     *
+     * @return Circuit
+     */
+    public function BeforeUpdateEtape(\AppBundle\Entity\Etape $etape)
+    {
+    	if($etape->getCircuit() != $this) {
+    		return null;
+    	}
+    	$dureeCircuit = $this->getDureeCircuit();
+    
+    	$dureeEtape = $etape->getNombreJours();
+    	$dureeCircuit -= $dureeEtape;
+    	
+    	$this->setDureeCircuit($dureeCircuit);
+    
+    	return $this;
+    }
+    
+    /**
+     * After update etape
+     *
+     * @param \AppBundle\Entity\Etape $etape
+     *
+     * @return Circuit
+     */
+    public function AfterUpdateEtape(\AppBundle\Entity\Etape $etape)
+    {
+    	$dureeCircuit=$this->getDureeCircuit();
+    	 
+    	$dureeEtape = $etape->getNombreJours();
+    
+    	$dureeCircuit += $dureeEtape;
+    	$this->setDureeCircuit($dureeCircuit);
+    
+    	return $this;
+    }
+    /**
      * Remove etape
      *
      * @param \AppBundle\Entity\Etape $etape

@@ -29,7 +29,10 @@
 			   <td>{{ etape.numeroEtape }} 	 </td>
 			   <td>{{ etape.villeEtape }}    </td> 
 			   <td>{{ etape.nombreJours }} j.</td>
-			   <td><a href="{{ path("etape_delete", { 'id': etape.id,'circuit_id':circuit.id })}}" class="btn btn-danger">Delete</a></td>
+			   <td>
+			   <a href="{{ path("etape_edit", { 'id': etape.id, 'circuit_id':circuit.id })}}" class="btn btn-default">Edit</a>
+			   <a href="{{ path("etape_delete", { 'id': etape.id,'circuit_id':circuit.id })}}" class="btn btn-danger">Delete</a>
+			    </td>
 			</tr>
 			{% endfor %} {# circuit.etapes #}
 			</tbody>
