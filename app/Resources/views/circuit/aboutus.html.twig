@@ -1,19 +1,75 @@
 {% extends 'agvoybase.html.twig' %}
 
 {% block main %}
-    <ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#home" role="tab" data-toggle="tab">Home</a></li>
-  <li role="presentation"><a href="#profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li role="presentation"><a href="#messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li role="presentation"><a href="#settings" role="tab" data-toggle="tab">Settings</a></li>
-</ul>
 
-<!-- Tab panes -->
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="home">...</div>
-  <div role="tabpanel" class="tab-pane" id="profile">...</div>
-  <div role="tabpanel" class="tab-pane" id="messages">...</div>
-  <div role="tabpanel" class="tab-pane" id="settings">...</div>
-</div>
-    
+	<!-- ==== SECTION DIVIDER1 -->
+		<section class="section-divider textdivider" style="background-image:url({{ asset("img/divider1.jpg")}})">
+			<div class="container">
+				<h1>Voyage Agence</h1>
+				<hr>
+				<p>Tourism doesn't care about the destination, but care about the way people and things and those wonderful memories and scenery. Backpack,will start tomorrow!</p>
+			</div><!-- container -->
+		</section><!-- section -->
+
+	<!-- ==== ABOUT ==== -->
+		<div class="container">
+			<div class="row white">
+			<br>
+				<h1 class="centered">A LITTLE ABOUT OUR AGENCY</h1>
+				<hr>
+				
+				<div class="col-lg-6">
+					<p>We believe ideas come from everyone, everywhere. In fact, at BlackTie, everyone within our agency walls is a designer in their own right. And there are a few principles we believe—and we believe everyone should believe—about our design craft. These truths drive us, motivate us, and ultimately help us redefine the power of design. We’re big believers in doing right by our neighbors. After all, we grew up in the Twin Cities and we believe this place has much to offer. So we do what we can to support the community we love.</p>
+				</div><!-- col-lg-6 -->
+				
+				<div class="col-lg-6">
+					<p>Over the past four years, we’ve provided more than $1 million in combined cash and pro bono support to Way to Grow, an early childhood education and nonprofit organization. Other community giving involvement throughout our agency history includes pro bono work for more than 13 organizations, direct giving, a scholarship program through the Minneapolis College of Art & Design, board memberships, and ongoing participation in the Keystone Club, which gives five percent of our company’s earnings back to the community each year.</p>
+				</div><!-- col-lg-6 -->
+			</div><!-- row -->
+		</div><!-- container -->
+		
+		<!-- ==== SECTION DIVIDER2 -->
+		<section class="section-divider textdivider" style="background-image:url({{ asset("img/divider2.jpg")}})">
+			<div class="container">
+				<h1>Voyage Agence</h1>
+				<hr>
+				<p>To travel, ignore is multifarious, freely, to experience a city, a story, leave a piece of laughter.</p>
+			</div><!-- container -->
+		</section><!-- section -->
+		
+		<!-- ==== ABOUT ==== -->
+		<div class="container" id="about" name="about">
+			<div class="row white">
+			<br>
+				<h1 class="centered">A LITTLE ABOUT OUR TEAM</h1>
+				<hr>
+				
+				<div class="col-lg-6">
+					<img class="img img-circle center-block" src="{{ asset("img/aboutus.jpg")}}" width=300px height=300px>
+				</div><!-- col-lg-6 -->
+				
+				<div class="col-lg-6">
+					<p>Two little girls</p>
+				</div><!-- col-lg-6 -->
+			</div><!-- row -->
+		</div><!-- container -->
+		
+		<div class="container" style="margin:30px">
+			<div class="row">
+			<br>
+				<h1 class="centered">THANKS FOR VISITING US</h1>
+				<hr>
+				<div class="col-lg-4"></div>
+				<div class="col-lg-4">
+					<button type="button" class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#myModal">
+  						<span class="glyphicon glyphicon-hand-right"></span> Contact us
+					</button>
+				</div>
+				<div class="col-lg-4"></div>
+				</div><!-- row -->
+		
+		</div><!-- container -->
+		
+	
+	
 {% endblock %} {# main #}
