@@ -6,7 +6,8 @@
                     <div class="container">
                         <div class="navbar-header">
                             <a class="navbar-brand" href="{{ path('homepage') }}">
-                                Accueil Symfony
+                                <span class="glyphicon glyphicon-home"></span>
+                                Voyage Agence
                             </a>
 
                             <button type="button" class="navbar-toggle"
@@ -31,8 +32,13 @@
 									</li>
                                     {% endif %}
                                     #}
-                                       <a href="{{ path('login') }}">Login</a>
-                                       <a href="/logout">Logout</a>
+                                    <li>
+                                    </li>
+                                     <li>
+                                    	<a href="{{ path('login') }}"  style="padding:0">
+                                    		<button type="button" class="btn btn-default navbar-btn">Log in</button>
+                                    	</a>
+                                    </li>
                                 {% endblock %}
 
                             </ul>
@@ -41,8 +47,10 @@
                 </div>
             </header>
 {% endblock %}
-        
+
+{#        
 {% block sidebar %}
 	<h4>About</h4>
 	<p>Bienvenue sur notre agence virtuelle.</p>
 {% endblock %}
+#}
