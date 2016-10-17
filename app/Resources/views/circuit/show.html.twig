@@ -58,10 +58,12 @@
 	</div> {# programmations #}
 
 	 <h3>Commentaire</h3>
-	 	 <ul>
+     {{ form_start(form) }}
+     {{ form_widget(form) }}
+     {{ form_end(form) }}
          {% for commentaire in circuit.commentaires %}
                   <li>
-                         <strong>By {{ commentaire.userName }} on {{ commentaire.date|localizeddate('medium', 'short', null, 'UTC') }}:</strong>
+                         <strong>By {{ commentaire.userName }} on {{ commentaire.date|localizeddate('medium', 'short', null, 'Europe/Paris') }}:</strong>
                          <br>
                     {{ commentaire.description }}
                 </li>

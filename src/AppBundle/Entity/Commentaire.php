@@ -36,10 +36,10 @@ class Commentaire
 	
 	/**
 	 * @var \DateTime
-	 *
-	 * @ORM\Column(name="date", type="date")
+	 * @ORM\Column(type="datetime")
 	 */
 	private $date;
+	
 	
 	 /**
      * @ORM\ManyToOne(targetEntity="Circuit", inversedBy="commentaires")
@@ -48,6 +48,11 @@ class Commentaire
      */
 	protected $circuit;
 
+	public function __construct()
+	{
+		$this->date = new \DateTime();
+	}
+	
     /**
      * Get id
      *
