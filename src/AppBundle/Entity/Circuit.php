@@ -229,6 +229,7 @@ class Circuit
     {
         $this->programmations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->etapes = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -384,6 +385,7 @@ class Circuit
     public function addCommentaire(\AppBundle\Entity\Commentaire $commentaire)
     {
         $this->commentaires[] = $commentaire;
+        $commentaire->setCircuit($this);
 
         return $this;
     }
@@ -395,7 +397,13 @@ class Circuit
      */
     public function removeCommentaire(\AppBundle\Entity\Commentaire $commentaire)
     {
-        $this->commentaires->removeElement($commentaire);
+        if($commentaire->getCircuit() != $this) {
+        	return null;
+        }
+         
+        $this->programmations->removeElement($commentaire);
+        
+        return $this;
     }
 
     /**
