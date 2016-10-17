@@ -33,10 +33,18 @@
                                     {% endif %}
                                     #}
                                     <li>
+                                    	<a href="{{ path('aboutus') }}">About us</a>
                                     </li>
-                                     <li>
+                                    <li>
+                                    	<!-- Button trigger modal type="button" class="btn btn-default navbar-btn"-->
+										<a href="#" data-toggle="modal" data-target="#myModal">
+  											Contact us
+										</a>
+
+                                    </li>
+                                    <li>
                                     	<a href="{{ path('login') }}"  style="padding:0">
-                                    		<button type="button" class="btn btn-default navbar-btn">Log in</button>
+                                    		<button type="button" class="btn btn-primary navbar-btn">Log in</button>
                                     	</a>
                                     </li>
                                 {% endblock %}
@@ -46,6 +54,35 @@
                     </div>
                 </div>
             </header>
+            
+            
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  			<div class="modal-dialog">
+   				<div class="modal-content">
+      				<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        				<h3 class="modal-title" id="myModalLabel">Contact us</h3>
+        				
+      				</div>
+      				<div class="modal-body">
+        				<h4>Email:</h4>
+        				<table class="table">
+        					<tr>
+        						<td class="text-center info"><span class="glyphicon glyphicon-envelope"></span><address><h5>qi.zheng@telecom-sudparis.eu</h5></address></td>
+        						<td rowspan="2"><img class="center-block" src={{ asset("img/contactus.jpg")}} width=200px height=200px></td>
+        					</tr>
+        					<tr>
+        						<td class="text-center success"><span class="glyphicon glyphicon-envelope"></span><address><h5>yuwei.wang@telecom-sudparis.eu</h5></address></td>
+        					</tr>
+        				</table>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-primary" data-dismiss="modal">I know</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
 {% endblock %}
 
 {#        
