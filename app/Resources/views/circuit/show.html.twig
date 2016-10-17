@@ -56,6 +56,19 @@
 		{% endfor %}
 		</table>
 	</div> {# programmations #}
+
+	 <h3>Commentaire</h3>
+     {{ form_start(form) }}
+     {{ form_widget(form) }}
+     {{ form_end(form) }}
+         {% for commentaire in circuit.commentaires %}
+                  <li>
+                         <strong>By {{ commentaire.userName }} on {{ commentaire.date|localizeddate('medium', 'short', null, 'Europe/Paris') }}:</strong>
+                         <br>
+                    {{ commentaire.description }}
+                </li>
+         {% endfor %}
+         </ul>
     <ul>
         <li>
             <a href="{{ path('circuit_index') }}">Retour à la liste</a>

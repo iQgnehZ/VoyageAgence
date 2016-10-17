@@ -1,0 +1,85 @@
+<?php
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Commentaire
+ *
+ * @ORM\Table(name="commentaire")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CommentaireRepository")
+ */
+class Commentaire
+{
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="id", type="integer")
+	 * @ORM\Id
+	 * @ORM\GeneratedValue(strategy="AUTO")
+	 */
+	private $id;
+	
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="description", type="text")
+	 */
+	private $description;
+	
+	/**
+	 * @var string
+	 *
+	 * @ORM\Column(name="user_namee", type="string", length=30, nullable=true)
+	 */
+	private $userName;
+	
+	/**
+	 * @var \DateTime
+	 *
+	 * @ORM\Column(name="date", type="date")
+	 */
+	private $date;
+	
+	 /**
+     * @ORM\ManyToOne(targetEntity="Circuit", inversedBy="commentaires")
+     * (Doctrine OWNING SIDE)
+     * @ORM\JoinColumn(name="circuit_id", referencedColumnName="id")
+     */
+	protected $circuit;
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+  
+    /**
+     * Set circuit
+     *
+     * @param \AppBundle\Entity\Circuit $circuit
+     *
+     * @return Commentaire
+     */
+    public function setCircuit(\AppBundle\Entity\Circuit $circuit = null)
+    {
+        $this->circuit = $circuit;
+
+        return $this;
+    }
+
+    /**
+     * Get circuit
+     *
+     * @return \AppBundle\Entity\Circuit
+     */
+    public function getCircuit()
+    {
+        return $this->circuit;
+    }
+}
