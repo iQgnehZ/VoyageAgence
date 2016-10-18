@@ -77,12 +77,14 @@
                      {{ form_start(form) }}
                      {{ form_widget(form) }}
                      {{ form_end(form) }}
+                     
                   <ul>
                      {% for commentaire in circuit.commentaires %}
-                  	<li>
+                  	<li style="padding-bottom:5px;font-size:14px">
                          <strong>By {{ commentaire.userName }} on {{ commentaire.date|localizeddate('medium', 'short', null, 'Europe/Paris') }}:</strong>
-                         <br>
-                         {{ commentaire.description }}
+                    		<br>
+                         <p style="font-size:16px">{{ commentaire.description }}</p>
+                         
                 	</li>
                      {% endfor %}
          		</ul>
@@ -93,11 +95,10 @@
 		
 		<div class="container">
 			<div class="row">
-			<br>
 				<hr>
 				
 				<div class="col-lg-4">
-					<button type="button" class="btn btn-primary" href="{{ path('circuit_index') }}">
+					<button type="button" class="btn btn-info" href="{{ path('circuit_index') }}">
   						Retour à la liste
 					</button>
 				</div>
