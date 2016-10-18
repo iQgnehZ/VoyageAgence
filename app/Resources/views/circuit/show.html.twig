@@ -86,13 +86,25 @@
                 	</li>
                      {% endfor %}
          		</ul>
-    				<ul>
-        			<li>
-            			<a href="{{ path('circuit_index') }}">Retour à la liste</a>
-        			</li>
-    				</ul>
     			</div>
     		</div>
 		</div> {# circuit #}
+		
+		
+		<div class="container">
+			<div class="row">
+			<br>
+				<hr>
+				
+				<div class="col-lg-4">
+					<button type="button" class="btn btn-primary" href="{{ path('circuit_index') }}">
+  						Retour à la liste
+					</button>
+				</div>
+				<div class="col-lg-4"></div>
+				<div class="col-lg-4"></div>
+				</div><!-- row -->
+		<br>
+		</div><!-- container -->      
     
 {% endblock %}  {# main #}
