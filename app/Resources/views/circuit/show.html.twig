@@ -7,73 +7,105 @@
        		{{ circuit.description }}
        	</h2>
     	
-    	<h3>Détails</h3>
-		<div class="circuit_details">
+    	<div class="container">
+			<div class="row">		
+				<h2 class="centered">DETAILS</h2>
+				<hr>	
+				<div class="col-lg-12 " style="font-size:18px">
+						<p><strong>Description: </strong>{{ circuit.description }} </p>
+						<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j. de voyage à travers le {{ circuit.paysDepart }}, pour terminer à {{ circuit.villeArrivee }}.</p>
+				</div>
+			</div>
+			<div class="row">		
+				<h3 class="centered">ETAPES</h3>
+				<hr>	
+				<div class="col-lg-12">
+		 			<table class="table table-hover">
+		 				<thead>
+							<tr style="font-size:16px">
+				    			<th class=" text-center">Numéro</th>
+								<th class=" text-center">Ville</th>
+								<th class=" text-center">Nombre jours</th>
+							</tr>
+						</thead>
+						<tbody  class=" text-center">
+ 			                {% for etape in circuit.etapes %}
+	 						<tr style="font-size:16px">
+			   					<td>{{ etape.numeroEtape }}</td>
+			   					<td>{{ etape.villeEtape }}</td> 
+			   					<td>{{ etape.nombreJours }} j.</td>
+							</tr>
+			                {% endfor %} {# circuit.etapes #}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
 		
-			<p>Description: {{ circuit.description }}</p>
-			
-			<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j. de voyage à travers le {{ circuit.paysDepart }}, pour terminer à {{ circuit.villeArrivee }}.</p>
-			
-			<h3>Étapes</h3>
-		 	<table>
-		 		<thead>
-					<tr>
-				    	<th>Numéro</th>
-						<th>Ville</th>
-						<th>Nombre jours</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
- 			{% for etape in circuit.etapes %}
-	 		<tr>
-			   <td>{{ etape.numeroEtape }}</td>
-			   <td>{{ etape.villeEtape }}</td> 
-			   <td>{{ etape.nombreJours }} j.</td>
-			</tr>
-			{% endfor %} {# circuit.etapes #}
-			</tbody>
-			</table>
-		</div> {# circuit_details #}
+		<div class="container">
+			<div class="row">		
+				<h3 class="centered">PROGRAMMATIONS de ce circuit</h3>
+				<hr>	
+				<div class="col-lg-12">
+				<table class="table table-hover">
+		 			<thead>
+						<tr style="font-size:16px" class=" text-center">
+				    		<th class=" text-center">Date de départ</th>
+							<th class=" text-center">Nombre de personnes</th>
+							<th class=" text-center">Prix</th>
+						</tr>
+					</thead>
+		            <tbody  class=" text-center">
+			                {%  for programmation in circuit.programmations %}
+						<tr style="font-size:16px">
+			   				<td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
+			   				<td>{{ programmation.nombrePersonnes }}</td> 
+			   				<td>{{ programmation.prix }} euros</td>
+						</tr>
+		                {% endfor %}
+		            </tbody>
+				</table>
+				</div>
+			</div>
+		</div> 
 		
-		<div class="programmations">
-		<h3>Programmations de ce circuit</h3>
-		<table>
-		 		<thead>
-					<tr>
-				    	<th>Date de départ</th>
-						<th>Nombre de personnes</th>
-						<th>Prix</th>
-						<th></th>
-					</tr>
-				</thead>
-		{%  for programmation in circuit.programmations %}
-			<tr>
-			   <td>{{ programmation.dateDepart|date('d-m-Y')  }}</td>
-			   <td>{{ programmation.nombrePersonnes }}</td> 
-			   <td>{{ programmation.prix }} euros</td>
-			</tr>
-		{% endfor %}
-		</table>
-	</div> {# programmations #}
-
-	 <h3>Commentaire</h3>
-     {{ form_start(form) }}
-     {{ form_widget(form) }}
-     {{ form_end(form) }}
-         {% for commentaire in circuit.commentaires %}
-                  <li>
+		<div class="container">
+			<div class="row">		
+				<h3 class="centered">COMMENTAIRES</h3>
+				<hr>	
+				<div class="col-lg-12">
+                     {{ form_start(form) }}
+                     {{ form_widget(form) }}
+                     {{ form_end(form) }}
+                  <hr>
+                  <ul>
+                     {% for commentaire in circuit.commentaires %}
+                  	<li style="padding-bottom:5px;font-size:14px">
                          <strong>By {{ commentaire.userName }} on {{ commentaire.date|localizeddate('medium', 'short', null, 'Europe/Paris') }}:</strong>
-                         <br>
-                    {{ commentaire.description }}
-                </li>
-         {% endfor %}
-         </ul>
-    <ul>
-        <li>
-            <a href="{{ path('circuit_index') }}">Retour à la liste</a>
-        </li>
-    </ul>
-	</div> {# circuit #}
+                    		<br>
+                         <p style="font-size:16px">{{ commentaire.description }}</p>
+                         
+                	</li>
+                     {% endfor %}
+         		</ul>
+    			</div>
+    		</div>
+		</div> {# circuit #}
+		
+		
+		<div class="container">
+			<div class="row">
+				<hr>
+				
+				<div class="col-lg-4">
+					<button type="button" class="btn btn-info" href="{{ path('circuit_index') }}">
+  						Retour à la liste
+					</button>
+				</div>
+				<div class="col-lg-4"></div>
+				<div class="col-lg-4"></div>
+				</div><!-- row -->
+		<br>
+		</div><!-- container -->      
     
 {% endblock %}  {# main #}
