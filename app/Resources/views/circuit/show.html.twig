@@ -9,10 +9,10 @@
     	
     	<div class="container">
 			<div class="row">		
-				<h3 class="centered">DETAILS</h3>
+				<h2 class="centered">DETAILS</h2>
 				<hr>	
-				<div class="col-lg-12">
-						<p>Description: {{ circuit.description }} </p>
+				<div class="col-lg-12 " style="font-size:18px">
+						<p><strong>Description: </strong>{{ circuit.description }} </p>
 						<p>Départ de {{ circuit.villeDepart }} pour {{ circuit.dureeCircuit }} j. de voyage à travers le {{ circuit.paysDepart }}, pour terminer à {{ circuit.villeArrivee }}.</p>
 				</div>
 			</div>
@@ -77,7 +77,7 @@
                      {{ form_start(form) }}
                      {{ form_widget(form) }}
                      {{ form_end(form) }}
-                     
+                  <hr>
                   <ul>
                      {% for commentaire in circuit.commentaires %}
                   	<li style="padding-bottom:5px;font-size:14px">
