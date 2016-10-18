@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 /**
  * Circuit controller.
@@ -47,8 +48,8 @@ class CircuitController extends Controller
     	$commentaire = new Commentaire();
     	$form = $this->createFormBuilder($commentaire)
     	->add('user_name', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
-    	->add('description', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
-     	->add('save', SubmitType::class, array('label'=>'Create Circuit','attr' => array('class' =>'btn btn_primary','style' =>'margin-bottom:15px')))
+    	->add('description', TextareaType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
+     	->add('save', SubmitType::class, array('label'=>'Create Commend','attr' => array('class' =>'btn btn_primary','style' =>'margin-bottom:15px')))
     	->getForm();
     	$form->handleRequest($request);
     	
