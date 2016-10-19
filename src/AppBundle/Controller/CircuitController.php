@@ -22,7 +22,7 @@ class CircuitController extends Controller
     /**
      * Lists all Circuit entities.
      * @Route("/", name="homepage")
-     * @Route("/circuit/", name="circuit_index")
+     * @Route("/circuit", name="circuit_index")
      * @Method("GET")
      */
     public function indexAction()

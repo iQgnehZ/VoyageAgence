@@ -76,7 +76,7 @@ class UserController extends Controller
 		->add('pays_depart', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('ville_depart', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('ville_arrivee', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
-		->add('duree_circuit', IntegerType::class, array('attr' => array('class' =>'formcontrol','style' =>'margin-bottom:15px')))
+		//->add('duree_circuit', IntegerType::class, array('attr' => array('class' =>'formcontrol','style' =>'margin-bottom:15px')))
 		->add('description', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('save', SubmitType::class, array('label'=>'Create Circuit','attr' => array('class' =>'btn btn_primary','style' =>'margin-bottom:15px')))
 		->getForm();
@@ -88,10 +88,10 @@ class UserController extends Controller
 			$villeDepart = $form['ville_depart']->getData();
 			$villeArrivee = $form['ville_arrivee']->getData();
 			$description = $form['description']->getData();
-			$dureeCircuit = $form['duree_circuit']->getData();
+			//$dureeCircuit = $form['duree_circuit']->getData();
 				
 			$circuit->setDescription($description);
-			$circuit->setDureeCircuit($dureeCircuit);
+			//$circuit->setDureeCircuit($dureeCircuit);
 			$circuit->setPaysDepart($paysDepart);
 			$circuit->setVilleArrivee($villeArrivee);
 			$circuit->setVilleDepart($villeDepart);
@@ -117,7 +117,7 @@ class UserController extends Controller
 		$circuit=$em->getRepository('AppBundle:Circuit')->find($id);
 		
 		$circuit->setDescription($circuit->getDescription());
-		$circuit->setDureeCircuit($circuit->getdureeCircuit());
+		//$circuit->setDureeCircuit($circuit->getdureeCircuit());
 		$circuit->setPaysDepart($circuit->getpaysDepart());
 		$circuit->setVilleArrivee($circuit->getvilleArrivee());
 		$circuit->setVilleDepart($circuit->getvilleDepart());
@@ -126,7 +126,7 @@ class UserController extends Controller
 		->add('pays_depart', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('ville_depart', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('ville_arrivee', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
-		->add('duree_circuit', IntegerType::class, array('attr' => array('class' =>'formcontrol','style' =>'margin-bottom:15px')))
+		//->add('duree_circuit', IntegerType::class, array('attr' => array('class' =>'formcontrol','style' =>'margin-bottom:15px')))
 		->add('description', TextType::class, array('attr' => array('class' =>'form-control','style' =>'margin-bottom:15px')))
 		->add('save', SubmitType::class, array('label'=>'Update Circuit','attr' => array('class' =>'btn btn_primary','style' =>'margin-bottom:15px')))
 		->getForm();
@@ -137,14 +137,14 @@ class UserController extends Controller
 			$paysDepart = $form['pays_depart']->getData();
 			$villeDepart = $form['ville_depart']->getData();
 			$villeArrivee = $form['ville_arrivee']->getData();
-			$dureeCircuit = $form['duree_circuit']->getData();
+		//	$dureeCircuit = $form['duree_circuit']->getData();
 			$description = $form['description']->getData();
 				
 			$em = $this->getDoctrine()->getManager();
 			$circuit = $em->getRepository('AppBundle:Circuit')->find($id);
 				
 			$circuit->setDescription($description);
-			$circuit->setDureeCircuit($dureeCircuit);
+		//	$circuit->setDureeCircuit($dureeCircuit);
 			$circuit->setPaysDepart($paysDepart);
 			$circuit->setVilleArrivee($villeArrivee);
 			$circuit->setVilleDepart($villeDepart);
