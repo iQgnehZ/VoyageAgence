@@ -10,6 +10,9 @@ security:
                     admin:
                         password: kitten
                         roles: 'ROLE_ADMIN'
+                    anna_admin:
+                        password: kitten
+                        roles: 'ROLE_ADMIN'
 
     firewalls:
         dev:
