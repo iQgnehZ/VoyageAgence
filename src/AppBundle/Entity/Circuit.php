@@ -230,6 +230,7 @@ class Circuit
         $this->programmations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->etapes = new \Doctrine\Common\Collections\ArrayCollection();
         $this->commentaires = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->date = 0;
     }
 
     /**
